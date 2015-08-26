@@ -5,9 +5,15 @@ module.exports = function() {
         {
         "request": {
             "method": "POST",
-            "url": "http://4319e457.ngrok.com/ussd/1/",
+            "url": "http://afriapps.co.za/ussd/1/",
             "data": {
-                "name":null,"id":null,"choose_event":null,"resident_city":null,"meal_preference":null,"correct_answer":false
+                "addr": "+27724217253",
+                "states:id": "8506045237086",
+                "states:name": "Herman Stander",
+                "states:resident_city": "Pretoria",
+                "states:meal_preference": "Any",
+                "states:choose_event": "Johannesburg",
+                "correct_answer": "True"
             }
         },
         "response": {
@@ -26,10 +32,10 @@ module.exports = function() {
                 "files": {},
                 "origin": "192.168.0.23",
                 "url": "http://localhost:8000/ussd/1/",
-                "data": "{\"message\":\"hello world!\"}",
+                "data": "{\"win\":\"true\"}",
                 "args": {},
                 "json": {
-                    "message": "hello world!"
+                    "win": true
                 }
             }
         }

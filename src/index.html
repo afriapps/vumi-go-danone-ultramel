@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title></title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+
+		$(document).ready(function () {
+
+            d = {
+                "code": 200,
+                "request": {
+                    "url": "http://afriapps.co.za/ussd/1/",
+                    "method": "POST",
+                    "body": "{\"states:start\":\"states:name\",\"states:resident_city\":\"hd\",\"addr\":\"+27724217253\",\"states:name\":\"he\",\"states:id\":\"7\",\"states:random_question_1\":\"correct\",\"states:choose_event\":\"Johannesburg\",\"states:random_question_3\":\"states:correct\",\"states:random_question_2\":\"correct\",\"correct_answer\":true,\"states:enter_draw\":\"states:random_question_2\",\"states:meal_preference\":\"Any\"}"
+                },
+                "body": "{\"win\": \"false\"}"
+            }
+            console.log(JSON.parse(d.body).win)
+            var events = ["Johannesburg", "Durban", "Cape Town"]
+            var provinces = ["Mpumalanga", "Limpopo", "Eastern Cape", "Gauteng", "KwaZulu-Natal", "Western Cape"]
+            var randomevent = Math.floor(Math.random()*events.length);
+            var randomprovince = Math.floor(Math.random()*provinces.length);
+            for (var i = 0; i < 1000; i++) {
+            //     console.log(i)
+                theData = {
+                        "addr": new Date().getTime(),
+                        "states:id": "8506045237086",
+                        "states:name": "Herman Stander",
+                        "states:resident_city": provinces[randomprovince],
+                        "states:meal_preference": "Any",
+                        "states:choose_event": events[randomevent],
+                        "correct_answer": "False"
+                    }
+                $.ajax({
+                        type:     "POST",
+                        url: "http://localhost:8000/ussd/1/",
+                        data: JSON.stringify(theData),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(results){  
+                                
+                            },
+                        error: function(results){
+                            console.log("ERROR");
+                        }
+                });  
+            }
+			
+		}); 
+		</script>
+	</head>
+	<body>
+	
+	</body>
+	</html>	

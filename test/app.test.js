@@ -27,7 +27,7 @@ describe("app", function() {
                     .check.interaction({
                         state:"states:start",
                         reply: [
-                            'Hi and welcome to the Danone Ultramel Ultra Sunday Lunch!',
+                            'Welcome to South Africa’s Biggest Lunch event competition! In order to enter the competition, please follow the steps.',
                             "1. Continue",
                             "2. Exit",
                         ].join("\n"),
@@ -90,7 +90,7 @@ describe("app", function() {
                             .check.interaction({
                                 state:"states:choose_event",
                                 reply: [
-                                    'Which Ultramel Big big lunch event would you like to attend?',
+                                    'Which South Africa’s Biggest Lunch event would you like to attend?',
                                     "1. Johannesburg",
                                     "2. Durban",
                                     "3. Cape Town",
@@ -101,7 +101,7 @@ describe("app", function() {
                     });
                     it("should save the event", function() {
                         return tester
-                            .input('2')
+                            .input('1')
                             .run();
                     });
                 });
@@ -111,13 +111,24 @@ describe("app", function() {
                             .setup.user.state('states:resident_city')
                             .check.interaction({
                                 state:"states:resident_city",
-                                reply: "In which city do you reside?",
+                                reply: [
+                                    "In which province do you reside?",
+                                    "1. Gauteng",
+                                    "2. Western Cape",
+                                    "3. KwaZulu-Natal",
+                                    "4. Free State",
+                                    "5. Limpopo",
+                                    "6. Mpumalanga",
+                                    "7. Northern Cape",
+                                    "8. North West",
+                                    "9. More",
+                                ].join("\n")
                             })
                             .run();
                     });
                     it("should save the city", function() {
                         return tester
-                            .input('Centurion')
+                            .input('1')
                             .run();
                     });
                 });
@@ -140,7 +151,7 @@ describe("app", function() {
                     });
                     it("should save meal preference", function() {
                         return tester
-                            .input('3')
+                            .input('5')
                             .run();
                     });
                 });
@@ -151,7 +162,7 @@ describe("app", function() {
                             .check.interaction({
                                 state:"states:enter_draw",
                                 reply: [
-                                    "Answer the next question correctly and stand a chance to win 4 tickets to the Ultra Mel Big big Lunch event on 27 September 2015", 
+                                    "Answer the next question correctly and stand a chance to win 4 tickets to South Africa's Biggest Lunch on 25 October 2015", 
                                     "1. Show me the quesiton"
                                 ].join("\n")
                             })
@@ -178,33 +189,59 @@ describe("app", function() {
                     });
                 });
                 describe("when choose answer", function () {
-                    describe("if answer is correct", function () {
-                        it("should congratulate him, send to server and end the session", function() {
+                    describe("when answer is correct", function () {
+                        it("should check server", function() {
                             return tester
                                 .setup.user.state('states:random_question_1')
                                 .input('3')
                                 .check.interaction({
-                                    state: 'states:end_correct',
+                                    state: 'states:end_win',
                                     reply: 'Congratulations. You have won 4 tickets to the Big big Sunday Lunch event on 27 September in >>venue selected<<'
                                 })
                                 .check.reply.ends_session()
                                 .run();
                         });
+                        describe("when winner", function () {
+                           it("should congratulate and end session", function() {
+                                return tester
+                                    .setup.user.state('states:end_win')
+                                    .input('3')
+                                    .check.interaction({
+                                        state: 'states:end_win',
+                                        reply: 'Congratulations. You have won 4 tickets to the Big big Sunday Lunch event on 27 September in >>venue selected<<'
+                                    })
+                                    .check.reply.ends_session()
+                                    .run();
+                            }); 
+                        });
+                        // describe("when looser", function () {
+                        //     it("should inform and end session", function() {
+                        //         return tester
+                        //             .setup.user.state('states:random_question_1')
+                        //             .input('1')
+                        //             .check.interaction({
+                        //                 state: 'states:end_notwin',
+                        //                 reply: 'Sorry, you are not a winner. Try again to stand a chance to win.'
+                        //             })
+                        //             .check.reply.ends_session()
+                        //             .run();
+                        //     }); 
+                        // });
                     });
   
-                    describe("if answer is NOT correct", function () {
-                        it("should inform user they have not won and end the session", function() {
-                            return tester
-                                .setup.user.state('states:random_question_1')
-                                .input('1')
-                                .check.interaction({
-                                    state: 'states:end_wrong',
-                                    reply: 'Incorrect answer. Sorry, you are not a winner. To stand a chance to win visit (details to be defined)'
-                                })
-                                .check.reply.ends_session()
-                                .run();
-                        });
-                    });
+                    // describe("if answer is NOT correct", function () {
+                    //     it("should inform user they have not won and end the session", function() {
+                    //         return tester
+                    //             .setup.user.state('states:random_question_1')
+                    //             .input('1')
+                    //             .check.interaction({
+                    //                 state: 'states:end_wrong',
+                    //                 reply: 'Incorrect answer. Sorry, you are not a winner. To stand a chance to win visit (details to be defined)'
+                    //             })
+                    //             .check.reply.ends_session()
+                    //             .run();
+                    //     });
+                    // });
                 });
             });
         });
