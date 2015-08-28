@@ -6,15 +6,20 @@ module.exports = function() {
         "request": {
             "method": "POST",
             "url": "http://afriapps.co.za/ussd/1/",
+            // "data": {
+            //     "addr": "+27724217253",
+            //     "states:id": "8506045237086",
+            //     "states:name": "Herman Stander",
+            //     "states:resident_city": "Pretoria",
+            //     "states:meal_preference": "Any",
+            //     "states:choose_event": "Johannesburg",
+            //     "correct_answer": "True"
+            // }
             "data": {
-                "addr": "+27724217253",
-                "states:id": "8506045237086",
-                "states:name": "Herman Stander",
-                "states:resident_city": "Pretoria",
-                "states:meal_preference": "Any",
-                "states:choose_event": "Johannesburg",
-                "correct_answer": "True"
-            }
+                "name":"Herman Stander",
+                "id":"8506045237086",
+                "city":"Pretoria"
+            } 
         },
         "response": {
             "code": 200,
@@ -35,7 +40,7 @@ module.exports = function() {
                 "data": "{\"win\":\"true\"}",
                 "args": {},
                 "json": {
-                    "win": true
+                    "win": "true"
                 }
             }
         }
