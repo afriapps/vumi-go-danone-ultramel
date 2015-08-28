@@ -165,9 +165,9 @@ go.app = function() {
                 question: 'Since when has Ultra Mel been bringing people together?',
 
                 choices: [
-                    new Choice('wrong', '1920\'s'),
-                    new Choice('correct', '1970\'s'),
-                    new Choice('wrong', '1990\'s')],
+                    new Choice('wrong', '1920s'),
+                    new Choice('correct', '1970s'),
+                    new Choice('wrong', '1990s')],
 
                 next: function(choice) {
                     if (choice.value == "correct") {
@@ -236,13 +236,13 @@ go.app = function() {
 
         self.states.add('states:end_win', function(name) {
             return new EndState(name, {
-                text: 'Congratulations. You have won 4 tickets to South Africa\'s Biggest Lunch on 25 October 2015 in ' + self.im.user.get_answer("states:choose_event"),
+                text: 'Congratulations. You have won 4 tickets to South Africas Biggest Lunch on 25 October 2015 in ' + self.im.user.get_answer("states:choose_event"),
                 next: "states:start"
             });
         });
         self.states.add('states:end_notwin', function(name) {
             return new EndState(name, {
-                text: 'Thank you for entering South Africa\'s Biggest Lunch Competition . Unfortunately you are not a winner. Better luck next time.',
+                text: 'Thank you for entering South Africas Biggest Lunch Competition . Unfortunately you are not a winner. Better luck next time.',
                 next: "states:start"
             });
         });
