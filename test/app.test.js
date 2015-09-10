@@ -54,7 +54,7 @@ describe("app", function() {
                     .check.interaction({
                         state:"states:enter_draw",
                         reply: [
-                            "Answer the below question correctly and stand a chance to win 4 tickets to the Ultra Mel Big big Lunch event on 27 September 2015.", 
+                            "Answer the below question correctly and stand a chance to win 4 tickets to the Ultra Mel Big big Lunch event on 25 Ocotober 2015.", 
                             "1. Show me the quesiton"
                         ].join("\n")
                     })

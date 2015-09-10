@@ -51,7 +51,7 @@ go.app = function() {
 
             random_choice = Math.floor(Math.random() * 3) + 1;
             return new ChoiceState(name, {
-                question: "Answer the below question correctly and stand a chance to win 4 tickets to the Ultra Mel Big big Lunch event on 27 September 2015.",
+                question: "Answer the below question correctly and stand a chance to win 4 tickets to the Ultra Mel Big big Lunch event on 25 Ocotober 2015.",
 
                 choices: [
                     // new Choice("states:random_question_" + random_choice, "Show me the quesiton"),
