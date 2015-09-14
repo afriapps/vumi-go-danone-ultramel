@@ -5,7 +5,7 @@ module.exports = function() {
         {
         "request": {
             "method": "POST",
-            "url": "http://afriapps.co.za/ussd/1/",
+            "url": "http://750a9927.ngrok.com/ussd/1/",
             // "data": {
             //     "addr": "+27724217253",
             //     "states:id": "8506045237086",
@@ -36,7 +36,7 @@ module.exports = function() {
                 },
                 "files": {},
                 "origin": "192.168.0.23",
-                "url": "http://localhost:8000/ussd/1/",
+                "url": "http://750a9927.ngrok.com/ussd/1/",
                 "data": "{\"win\":\"true\"}",
                 "args": {},
                 "json": {

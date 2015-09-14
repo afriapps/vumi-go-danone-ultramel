@@ -24,6 +24,7 @@ describe("app", function() {
             it("should ask for name and surname", function() {  
                 return tester
                     .start()
+                    .input('Herman Stander')
                     .check.interaction({
                         state:"states:start",
                         reply: "Please enter your name and surname",
@@ -33,6 +34,7 @@ describe("app", function() {
             it("should ask for ID number", function() {                
                 return tester
                     .setup.user.state('states:id')
+                    .input('8506045237086')
                     .check.interaction({
                         state:"states:id",
                         reply: 'Please enter your ID number',
@@ -44,7 +46,18 @@ describe("app", function() {
                     .setup.user.state('states:city')
                     .check.interaction({
                         state:"states:city",
-                        reply: 'In which city do you reside?',
+                        reply: [
+                            "In which province do you reside?", 
+                            "1. Gauteng",
+                            "2. Western Cape",
+                            "3. KwaZulu-Natal",
+                            "4. Free State",
+                            "5. Limpopo",
+                            "6. Mpumalanga",
+                            "7. Northern Cape",
+                            "8. North West",
+                            "9. Easter Cape",
+                        ].join("\n")
                     })
                     .run();
             });
@@ -54,7 +67,7 @@ describe("app", function() {
                     .check.interaction({
                         state:"states:enter_draw",
                         reply: [
-                            "Answer the below question correctly and stand a chance to win 4 tickets to the Ultra Mel Big big Lunch event on 25 Ocotober 2015.", 
+                            "Answer the below question correctly and stand a chance to win 4 tickets to the Ultra Mel Big big Lunch event on 25 October 2015.", 
                             "1. Show me the quesiton"
                         ].join("\n")
                     })
@@ -67,7 +80,7 @@ describe("app", function() {
                     .check.interaction({
                         state:"states:random_question_1",
                         reply: [
-                            "How much milk does the Ultra Mel special recipe contain?", 
+                            "Choose option 1, 2 or 3. How much milk does the Ultra Mel special recipe contain?", 
                             "1. 30%",   // wrong
                             "2. 65%",   // wrong
                             "3. 80%"    // correct
